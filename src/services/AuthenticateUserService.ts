@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
+import { sign } from 'jsonwebtoken';
 
 import User from '../models/User';
 
@@ -11,7 +12,7 @@ class AuthenticateUserService {
     public async execute({
         email,
         password,
-    }: Request): Promise<{ user: User }> {
+    }: Request): Promise<{ user: User; token: string }> {
         const usersRepository = getRepository(User);
         const user = await usersRepository.findOne({ where: { email } });
 
@@ -24,8 +25,14 @@ class AuthenticateUserService {
         if (!passwordMatched) {
             throw new Error('Incorrect email/password combination');
         }
+        const token = sign({}, 'b09047b7872053dc2b06e78ab3de3ea9', {
+            subject: user.id,
+            expiresIn: '1d',
+        });
+
         return {
             user,
+            token,
         };
     }
 }
