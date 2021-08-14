@@ -12,7 +12,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreatAppointmentService {
+class CreateAppointmentService {
     constructor(
         @inject('AppointmentsRepository')
         private appointmentsRepository: IAppointmentsRepository,
@@ -40,4 +40,4 @@ class CreatAppointmentService {
     }
 }
 
-export default CreatAppointmentService;
+export default CreateAppointmentService;
