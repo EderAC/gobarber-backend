@@ -3,7 +3,7 @@
     "host": "localhost",
     "port": 5432,
     "username": "postgres",
-    "password": "engcomp2015",
+    "password": "eder@raizs2021",
     "database": "gostack_gobarber",
     "entities": [
         "./src/modules/**/infra/typeorm/entities/*.ts"
