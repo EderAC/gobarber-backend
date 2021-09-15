@@ -33,7 +33,7 @@ describe('UpdateUserAvatar', () => {
     });
 
     it('should not be able to update user avatar without user ', async () => {
-        expect(
+        await expect(
             updateUserAvatar.execute({
                 user_id: '123',
                 avatarFilename: 'nice fotinha',
