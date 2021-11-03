@@ -2,13 +2,13 @@ import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepo
 import ListProvidersService from './ListProvidersService';
 
 let fakeUsersRepository: FakeUsersRepository;
-let listProfile: ListProvidersService;
+let listProvider: ListProvidersService;
 
 describe('ListProviders', () => {
     beforeEach(() => {
         fakeUsersRepository = new FakeUsersRepository();
 
-        listProfile = new ListProvidersService(fakeUsersRepository);
+        listProvider = new ListProvidersService(fakeUsersRepository);
     });
 
     it('should be able to list the providers', async () => {
@@ -30,7 +30,7 @@ describe('ListProviders', () => {
             password: 'password',
         });
 
-        const providers = await listProfile.execute({
+        const providers = await listProvider.execute({
             user_id: loggedUser.id,
         });
 
